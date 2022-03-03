@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{82FE0079-B579-45EF-88F4-982ECDB90287}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastructure", "{6C3165A8-AC3B-4C50-BA72-CD9EC8E962A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{B3847BFE-EEFF-48D8-8A80-52EF55194C5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5DD2DAC9-D8F0-468E-A1D9-4623FB1F8D9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geodata.Domain", "Geodata.Domain\Geodata.Domain.csproj", "{FF904B00-0B5F-47D8-A847-2CDA935DD42C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF904B00-0B5F-47D8-A847-2CDA935DD42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF904B00-0B5F-47D8-A847-2CDA935DD42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF904B00-0B5F-47D8-A847-2CDA935DD42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF904B00-0B5F-47D8-A847-2CDA935DD42C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF904B00-0B5F-47D8-A847-2CDA935DD42C} = {82FE0079-B579-45EF-88F4-982ECDB90287}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CA930C1-EB4D-4A4F-BDEA-6AE6B4C865A2}
+	EndGlobalSection
+EndGlobal
