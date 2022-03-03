@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5DD2DAC9-D8F0-468E-A1D9-4623FB1F8D9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEvents.Domain", "Geodata.Domain\GeoEvents.Domain.csproj", "{FF904B00-0B5F-47D8-A847-2CDA935DD42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Domain", "Geodata.Domain\GeoEvents.Domain.csproj", "{FF904B00-0B5F-47D8-A847-2CDA935DD42C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEvents.Application", "GeoEvents.Application\GeoEvents.Application.csproj", "{6002CF37-37E4-4DEA-995B-58F3F31B62D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Application", "GeoEvents.Application\GeoEvents.Application.csproj", "{6002CF37-37E4-4DEA-995B-58F3F31B62D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEvents.Persistence", "GeoEvents.Persistence\GeoEvents.Persistence.csproj", "{50BDB61B-06D9-4216-9483-E081BBBAF163}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Persistence", "GeoEvents.Persistence\GeoEvents.Persistence.csproj", "{50BDB61B-06D9-4216-9483-E081BBBAF163}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEvents.Mvc", "GeoEvents.Mvc\GeoEvents.Mvc.csproj", "{D73EC632-636D-4A58-B01A-3A212DB2F7B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Mvc", "GeoEvents.Mvc\GeoEvents.Mvc.csproj", "{D73EC632-636D-4A58-B01A-3A212DB2F7B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
