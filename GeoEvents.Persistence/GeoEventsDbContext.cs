@@ -1,0 +1,21 @@
+﻿using GeoEvents.Application.Interfaces;
+using GeoEvents.Domain;
+using GeoEvents.Persistence.EntityTypeConfigurations;
+using Microsoft.EntityFrameworkCore;
+
+namespace GeoEvents.Persistence
+{
+    public class GeoEventsDbContext : DbContext, IGeoEventsDbContext
+    {
+        public DbSet<GeoEvent> GeoEvent { get; set; }
+        
+        public GeoEventsDbContext(DbContextOptions<GeoEventsDbContext> options)
+            : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new GeoEventConfiguration());
+            base.OnModelCreating(builder);
+        }
+    }
+}
