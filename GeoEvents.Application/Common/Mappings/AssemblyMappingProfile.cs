@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Reflection;
 
-namespace GeoEvents.Application.Mappings
+namespace GeoEvents.Application.Common.Mappings
 {
     //Configuration mapper
     public class AssemblyMappingProfile : Profile
