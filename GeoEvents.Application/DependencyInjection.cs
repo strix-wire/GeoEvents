@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using FluentValidation;
+using GeoEvents.Application.Common.Behaviors;
 
 namespace GeoEvents.Application
 {
@@ -10,6 +12,13 @@ namespace GeoEvents.Application
             this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            
+            //Добавляем валидотор из сборки
+            services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
+
+            //Регистрируем PipelineBehavior
+            services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
             return services;
         }
     }
