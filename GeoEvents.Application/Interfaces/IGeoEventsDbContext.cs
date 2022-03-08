@@ -7,7 +7,7 @@ namespace GeoEvents.Application.Interfaces
     public interface IGeoEventsDbContext
     {
         //DbSet - collection all entities in context
-        DbSet<GeoEvent> GeoEvent { get; set; }
+        DbSet<GeoEvent> GeoEvents { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

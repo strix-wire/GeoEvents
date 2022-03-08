@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace GeoEvents.Application.Mappings
+namespace GeoEvents.Application.Common.Mappings
 {
     public interface IMapWith<T>
     {
