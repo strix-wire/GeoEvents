@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using System.Reflection;
 using GeoEvents.Application;
 using GeoEvents.Persistence;
-
+using GeoEvents.Mvc.Middleware;
 
 namespace GeoEvents.Mvc
 {
