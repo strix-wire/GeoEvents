@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
 using GeoEvents.Application.GeoEvents.Commands.DeleteCommand;
-using GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventList;
 using GeoEvents.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,18 +40,18 @@ namespace GeoEvents.Mvc.Controllers
         //    return Ok(vm);
         //}
 
-        ////FromBody - указывает, что параметр метода контроллера должен
-        ////быть извлечен из данных тела http запроса и затем десериализован
-        ////с помощью формата входных данных
-        //[HttpPost]
-        //public async Task<ActionResult<Guid>> Create([FromBody] CreateGeoEventDto createGeoEventDto)
-        //{
-        //    //сформируем команду и добавим к ней id user
-        //    var command = _mapper.Map<CreateGeoEventCommand>(createGeoEventDto);
-        //    command.UserId = UserId;
-        //    var geoEventId = await Mediator.Send(command);
-        //    return Ok(geoEventId);
-        //}
+        //FromBody - указывает, что параметр метода контроллера должен
+        //быть извлечен из данных тела http запроса и затем десериализован
+        //с помощью формата входных данных
+        [HttpGet]
+        public async Task<IActionResult> Create(CreateGeoEventDto createGeoEventDto)
+        {
+            //сформируем команду и добавим к ней id user
+            var command = _mapper.Map<CreateGeoEventCommand>(createGeoEventDto);
+            command.UserId = UserId;
+            var geoEventId = await Mediator.Send(command);
+            return Redirect("Index");
+        }
 
         //[HttpPut]
         //public async Task<IActionResult> Update([FromBody] UpdateGeoEventDto updateGeoEventDto)

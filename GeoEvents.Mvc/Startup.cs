@@ -11,6 +11,7 @@ using GeoEvents.Persistence;
 using GeoEvents.Mvc.Middleware;
 using GeoEvents.Application.Common.Mappings;
 using GeoEvents.Application.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace GeoEvents.Mvc
 {
@@ -22,6 +23,8 @@ namespace GeoEvents.Mvc
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddEntityFrameworkStores<GeoEventsDbContext>();
 
             services.AddAutoMapper(config =>
             {
@@ -54,7 +57,7 @@ namespace GeoEvents.Mvc
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseHttpsRedirection();
