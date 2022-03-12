@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using GeoEvents.Domain;
-using System.Threading.Tasks;
 using GeoEvents.Application.Interfaces;
 
 namespace GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent

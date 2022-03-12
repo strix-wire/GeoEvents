@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +9,8 @@ using System.Reflection;
 using GeoEvents.Application;
 using GeoEvents.Persistence;
 using GeoEvents.Mvc.Middleware;
+using GeoEvents.Application.Common.Mappings;
+using GeoEvents.Application.Interfaces;
 
 namespace GeoEvents.Mvc
 {
@@ -26,7 +27,7 @@ namespace GeoEvents.Mvc
             {
                 //Get information about current assembly in progress
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-                config.AddProfile(new AssemblyMappingProfile(typeof(INotesDbContext).Assembly));
+                config.AddProfile(new AssemblyMappingProfile(typeof(IGeoEventsDbContext).Assembly));
             });
 
             services.AddApplication();
@@ -44,55 +45,54 @@ namespace GeoEvents.Mvc
                 });
             });
 
-            services.AddAuthentication(config =>
-            {
-                config.DefaultAuthenticateScheme =
-                    JwtBearerDefaults.AuthenticationScheme;
-                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer("Bearer", options =>
-                {
-                    options.Authority = "https://localhost:44386/";
-                    options.Audience = "NotesWebAPI";
-                    options.RequireHttpsMetadata = false;
-                });
+            //services.AddAuthentication(config =>
+            //{
+            //    config.DefaultAuthenticateScheme =
+            //        JwtBearerDefaults.AuthenticationScheme;
+            //    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+                //.AddJwtBearer("Bearer", options =>
+                //{
+                //    options.Authority = "https://localhost:44386/";
+                //    options.Audience = "GeoEventsWebAPI";
+                //    options.RequireHttpsMetadata = false;
+                //});
 
-            services.AddVersionedApiExplorer(options =>
-                options.GroupNameFormat = "'v'VVV");
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>,
-                    ConfigureSwaggerOptions>();
-            services.AddSwaggerGen();
-            services.AddApiVersioning();
+            //services.AddVersionedApiExplorer(options =>
+            //    options.GroupNameFormat = "'v'VVV");
+            //services.AddTransient<IConfigureOptions<SwaggerGenOptions>,
+            //        ConfigureSwaggerOptions>();
+            //services.AddSwaggerGen();
+            //services.AddApiVersioning();
 
-            services.AddSingleton<ICurrentUserService, CurrentUserService>();
+            //services.AddSingleton<ICurrentUserService, CurrentUserService>();
             services.AddHttpContextAccessor();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            IApiVersionDescriptionProvider provider)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseSwagger();
-            app.UseSwaggerUI(config =>
-            {
-                foreach (var description in provider.ApiVersionDescriptions)
-                {
-                    config.SwaggerEndpoint(
-                        $"/swagger/{description.GroupName}/swagger.json",
-                        description.GroupName.ToUpperInvariant());
-                    config.RoutePrefix = string.Empty;
-                }
-            });
+            //app.UseSwagger();
+            //app.UseSwaggerUI(config =>
+            //{
+            //    foreach (var description in provider.ApiVersionDescriptions)
+            //    {
+            //        config.SwaggerEndpoint(
+            //            $"/swagger/{description.GroupName}/swagger.json",
+            //            description.GroupName.ToUpperInvariant());
+            //        config.RoutePrefix = string.Empty;
+            //    }
+            //});
             app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseApiVersioning();
+            //app.UseApiVersioning();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
