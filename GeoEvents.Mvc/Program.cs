@@ -6,11 +6,11 @@ namespace GeoEvents.Mvc
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .WriteTo.File("NotesWebAppLog-.txt", rollingInterval:
-                    RollingInterval.Day)
-                .CreateLogger();
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+            //    .WriteTo.File("GeoEventsWebAppLog-.txt", rollingInterval:
+            //        RollingInterval.Day)
+            //    .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
 
@@ -27,7 +27,7 @@ namespace GeoEvents.Mvc
                 catch (Exception exception)
                 {
                     //Если база не была успешно создана
-                    Log.Fatal(exception, "An error occurred while app initialization");
+                    //Log.Fatal(exception, "An error occurred while app initialization");
                 }
             }
 

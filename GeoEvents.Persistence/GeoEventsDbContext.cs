@@ -7,7 +7,7 @@ namespace GeoEvents.Persistence
 {
     public class GeoEventsDbContext : DbContext, IGeoEventsDbContext
     {
-        public DbSet<GeoEvent> GeoEvent { get; set; }
+        public DbSet<GeoEvent> GeoEvents { get; set; }
         
         public GeoEventsDbContext(DbContextOptions<GeoEventsDbContext> options)
             : base(options) { }
