@@ -32,7 +32,7 @@ namespace GeoEvents.Mvc
 
             services.AddApplication();
             services.AddPersistence(Configuration);
-            services.AddControllers();
+            services.AddControllersWithViews();
 
             //Разрешает все корсы, лучше так не делать
             services.AddCors(options =>
@@ -61,9 +61,12 @@ namespace GeoEvents.Mvc
             app.UseCors("AllowAll");
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
