@@ -9,6 +9,7 @@ namespace GeoEvents.Tests.Common
     //Следовательно создадим тестовые данные соответствующие DbContext приложения
     public class GeoEventsContextFactory
     {
+        //UserA and UserB
         public static Guid UserAId = Guid.NewGuid();
         public static Guid UserBId = Guid.NewGuid();
 
