@@ -4,7 +4,6 @@ using System.Security.Claims;
 
 namespace GeoEvents.Mvc.Controllers
 {
-    [ApiController]
     public abstract class BaseController : Controller
     {
         private IMediator _mediator;
