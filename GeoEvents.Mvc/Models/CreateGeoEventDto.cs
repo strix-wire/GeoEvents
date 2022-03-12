@@ -1,4 +1,5 @@
-﻿using GeoEvents.Application.Common.Mappings;
+﻿using AutoMapper;
+using GeoEvents.Application.Common.Mappings;
 using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
 
 namespace GeoEvents.Mvc.Models
@@ -11,7 +12,7 @@ namespace GeoEvents.Mvc.Models
         public string Details { get; set; }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<CreateGeoEvent, CreateGeoEventCommand>()
+            profile.CreateMap<CreateGeoEventDto, CreateGeoEventCommand>()
                 .ForMember(geoEventCommand => geoEventCommand.Title,
                     opt => opt.MapFrom(geoEventDto => geoEventDto.Title))
                 .ForMember(geoEventCommand => geoEventCommand.Details,

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GeoEvents.Mvc.Controllers
 {
-    [Route("api/[controller]")]
     public class GeoEventController : BaseController
     {
         private readonly IMapper _mapper;
@@ -40,7 +39,7 @@ namespace GeoEvents.Mvc.Controllers
         }
 
         //FromBody - указывает, что параметр метода контроллера должен
-        //быть извлечен из данных тела http запроса и затем десириализован
+        //быть извлечен из данных тела http запроса и затем десериализован
         //с помощью формата входных данных
         [HttpPost]
         public async Task<ActionResult<Guid>> Create([FromBody] CreateGeoEventDto createGeoEventDto)

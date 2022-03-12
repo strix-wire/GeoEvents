@@ -5,7 +5,6 @@ using System.Security.Claims;
 namespace GeoEvents.Mvc.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
     public abstract class BaseController : Controller
     {
         private IMediator _mediator;
