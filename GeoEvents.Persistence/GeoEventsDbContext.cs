@@ -1,11 +1,12 @@
 ﻿using GeoEvents.Application.Interfaces;
 using GeoEvents.Domain;
 using GeoEvents.Persistence.EntityTypeConfigurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeoEvents.Persistence
 {
-    public class GeoEventsDbContext : DbContext, IGeoEventsDbContext
+    public class GeoEventsDbContext : IdentityDbContext, IGeoEventsDbContext
     {
         public DbSet<GeoEvent> GeoEvents { get; set; }
         

@@ -1,28 +1,28 @@
 ﻿let marker = null
 let map = null
 
-function Map(latitude, longitude, nameBranch, size) {
-    if (!typeof (nameBranch) === "string") {
-        nameBranch = ""
-    }
-    if (map === null) {
-        map = L.map('map').setView([parseFloat(latitude), parseFloat(longitude)], size)
-    } else {
-        // перемещение к следующей позиции
-        map.flyTo([parseFloat(latitude), parseFloat(longitude)], size)
-    }
+//function Map(latitude, longitude, nameBranch, size) {
+//    if (!typeof (nameBranch) === "string") {
+//        nameBranch = ""
+//    }
+//    if (map === null) {
+//        map = L.map('map').setView([parseFloat(latitude), parseFloat(longitude)], size)
+//    } else {
+//        // перемещение к следующей позиции
+//        map.flyTo([parseFloat(latitude), parseFloat(longitude)], size)
+//    }
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map)
+//    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//        attribution:
+//            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//    }).addTo(map)
 
-    // удаление предыдущего маркера
-    if (marker) {
-        map.removeLayer(marker)
-    }
-    marker = new L.Marker([parseFloat(latitude), parseFloat(longitude)], size).addTo(map).bindPopup(nameBranch).openPopup()
-}
+//    // удаление предыдущего маркера
+//    if (marker) {
+//        map.removeLayer(marker)
+//    }
+//    marker = new L.Marker([parseFloat(latitude), parseFloat(longitude)], size).addTo(map).bindPopup(nameBranch).openPopup()
+//}
 
 function StartMap() {
     //let DbForMap = document.getElementById('DbForMap');
@@ -72,28 +72,28 @@ function StartMap() {
 }
 
 
-function RedirectMap(latitude, longitude, size) {
-    let DbForMap = document.getElementById('NameBranchForRedirectMap');
-    var nameBranch = DbForMap.className;
-    if (!typeof (nameBranch) === "string") {
-        nameBranch = ""
-    }
-    if (map === null) {
-        map = L.map('map').setView([parseFloat(latitude), parseFloat(longitude)], size)
-    } else {
-        // перемещение к следующей позиции
-        map.flyTo([parseFloat(latitude), parseFloat(longitude)], size)
-    }
+//function RedirectMap(latitude, longitude, size) {
+//    let DbForMap = document.getElementById('NameBranchForRedirectMap');
+//    var nameBranch = DbForMap.className;
+//    if (!typeof (nameBranch) === "string") {
+//        nameBranch = ""
+//    }
+//    if (map === null) {
+//        map = L.map('map').setView([parseFloat(latitude), parseFloat(longitude)], size)
+//    } else {
+//        // перемещение к следующей позиции
+//        map.flyTo([parseFloat(latitude), parseFloat(longitude)], size)
+//    }
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map)
+//    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//        attribution:
+//            '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//    }).addTo(map)
 
-    // удаление предыдущего маркера
-    if (marker) {
-        map.removeLayer(marker)
-    }
-    marker = new L.Marker([parseFloat(latitude), parseFloat(longitude)], size).addTo(map).bindPopup(nameBranch).openPopup()
-}
+//    // удаление предыдущего маркера
+//    if (marker) {
+//        map.removeLayer(marker)
+//    }
+//    marker = new L.Marker([parseFloat(latitude), parseFloat(longitude)], size).addTo(map).bindPopup(nameBranch).openPopup()
+//}
 
