@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
 using GeoEvents.Application.GeoEvents.Commands.DeleteCommand;
+using GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent;
+using GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails;
+using GeoEvents.Application.GeoEvents.Queries.GetGeoEventList;
 using GeoEvents.Mvc.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeoEvents.Mvc.Controllers 
@@ -11,34 +15,35 @@ namespace GeoEvents.Mvc.Controllers
         private readonly IMapper _mapper;
         public HomeController(IMapper mapper) => _mapper = mapper;
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        ////Get list GeoEvents
-        //[HttpGet]
-        //public async Task<ActionResult<GeoEventListVm>> GetAll()
-        //{
-        //    var query = new GetGeoEventListQuery()
-        //    {
-        //        UserId = UserId
-        //    };
-        //    var vm = await Mediator.Send(query);
-        //    return Ok(vm);
-        //}
+        //Get list GeoEvents
+        [HttpGet]
+        public async Task<ActionResult<GeoEventListVm>> GetAll()
+        {
+            var query = new GetGeoEventListQuery()
+            {
+                UserId = UserId
+            };
+            var vm = await Mediator.Send(query);
+            return Ok(vm);
+        }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<GeoEventDetailsVm>> Get(Guid id)
-        //{
-        //    var query = new GetGeoEventDetailsQuery()
-        //    {
-        //        UserId = UserId,
-        //        Id = id
-        //    };
-        //    var vm = await Mediator.Send(query);
-        //    return Ok(vm);
-        //}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<GeoEventDetailsVm>> Get(Guid id)
+        {
+            var query = new GetGeoEventDetailsQuery()
+            {
+                UserId = UserId,
+                Id = id
+            };
+            var vm = await Mediator.Send(query);
+            return Ok(vm);
+        }
 
         //FromBody - указывает, что параметр метода контроллера должен
         //быть извлечен из данных тела http запроса и затем десериализован
@@ -53,25 +58,25 @@ namespace GeoEvents.Mvc.Controllers
             return Redirect("Index");
         }
 
-        //[HttpPut]
-        //public async Task<IActionResult> Update([FromBody] UpdateGeoEventDto updateGeoEventDto)
-        //{
-        //    var command = _mapper.Map<UpdateGeoEventCommand>(updateGeoEventDto);
-        //    command.UserId = UserId;
-        //    await Mediator.Send(command);
-        //    return NoContent();
-        //}
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateGeoEventDto updateGeoEventDto)
+        {
+            var command = _mapper.Map<UpdateGeoEventCommand>(updateGeoEventDto);
+            command.UserId = UserId;
+            await Mediator.Send(command);
+            return NoContent();
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    var command = new DeleteGeoEventCommand
-        //    {
-        //        Id = id,
-        //        UserId = UserId
-        //    };
-        //    await Mediator.Send(command);
-        //    return NoContent();
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new DeleteGeoEventCommand
+            {
+                Id = id,
+                UserId = UserId
+            };
+            await Mediator.Send(command);
+            return NoContent();
+        }
     }
 }

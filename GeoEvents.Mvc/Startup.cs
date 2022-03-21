@@ -12,6 +12,8 @@ using GeoEvents.Mvc.Middleware;
 using GeoEvents.Application.Common.Mappings;
 using GeoEvents.Application.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using GeoEvents.Mvc.Models;
+using GeoEvents.Persistence.IdentityEF;
 
 namespace GeoEvents.Mvc
 {
@@ -23,8 +25,17 @@ namespace GeoEvents.Mvc
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<MyIdentityUser,IdentityRole>()
                 .AddEntityFrameworkStores<GeoEventsDbContext>();
+
+            //Определяем параметры пароля
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredUniqueChars = 0;
+            });
 
             services.AddAutoMapper(config =>
             {

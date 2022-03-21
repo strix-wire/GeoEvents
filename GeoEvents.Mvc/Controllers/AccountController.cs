@@ -1,12 +1,113 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GeoEvents.Mvc.Models;
+using GeoEvents.Mvc.ViewModels;
+using GeoEvents.Persistence.IdentityEF;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GeoEvents.Mvc.Controllers
 {
     public class AccountController : BaseController
     {
-        public IActionResult Index()
+        private readonly UserManager<MyIdentityUser> _userManager;
+        private readonly SignInManager<MyIdentityUser> _signInManager;
+        public AccountController(UserManager<MyIdentityUser> userManager,
+                                    SignInManager<MyIdentityUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        [HttpGet]
+        public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //ИЗМЕНИ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                var user = new MyIdentityUser
+                {
+                    UserName = model.Email,
+                    Name = model.Name,
+                    Email = model.Email,
+                    Surname = model.Surname,
+                    MiddleName = model.MiddleName,
+                    DateOfBirth = model.DateOfBirth,
+                    City = model.City,
+                    Sex = model.Sex
+                };
+                //пароль хешируется сам и надежно хранится в бд
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    //false - сессионный файл куки
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("index", "home");
+                }
+
+                //если есть ошибка - перебираем все
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index", "home");
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //асинхронный метод входа с паролем
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+                //если успешно вошли
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index", "home");
+                }
+
+                //если не успешно
+                ModelState.AddModelError(string.Empty, "Неверный логин или пароль");
+            }
+
+            return View(model);
+        }
+
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> IsEmailInUse(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user == null)
+            {
+                //Json для jquery
+                return Json(true);
+            }
+            else
+            {
+                return Json($"Email {email} уже используется");
+            }
         }
     }
 }
