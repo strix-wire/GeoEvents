@@ -2,9 +2,9 @@
 
 namespace GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent
 {
-    public class CreateGeoEventCommandValidator : AbstractValidator<CreateGeoEventCommand>
+    public class CreateUserCommandValidator : AbstractValidator<CreateGeoEventCommand>
     {
-        public CreateGeoEventCommandValidator()
+        public CreateUserCommandValidator()
         {
             //Длина заголовка заметки не более 250 символов.
             //ID пользователя не должен быть пустым Guid.

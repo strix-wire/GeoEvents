@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Persistence", "Ge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Mvc", "GeoEvents.Mvc\GeoEvents.Mvc.csproj", "{D73EC632-636D-4A58-B01A-3A212DB2F7B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEvents.Tests", "GeoEvent.Tests\GeoEvents.Tests.csproj", "{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Tests", "GeoEvent.Tests\GeoEvents.Tests.csproj", "{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
