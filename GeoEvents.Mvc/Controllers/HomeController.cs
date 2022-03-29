@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
-using GeoEvents.Application.GeoEvents.Commands.DeleteCommand;
-using GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventList;
 using GeoEvents.Mvc.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

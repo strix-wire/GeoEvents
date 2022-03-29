@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GeoEvents.Application.Common.Exceptions;
-using GeoEvents.Application.GeoEvents.Commands.DeleteCommand;
-using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
+using GeoEvents.Application.ConsideredGeoEvents.Commands.DeleteGeoEvent;
+using GeoEvents.Application.ConsideredGeoEvents.Commands.CreateGeoEvent;
 using GeoEvents.Tests.Common;
 using Xunit;
 
@@ -30,7 +30,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
 
             // Assert
             
-            Assert.Null(Context.GeoEvents.SingleOrDefault(note =>
+            Assert.Null(Context.ConsideredGeoEvents.SingleOrDefault(note =>
                 note.Id == GeoEventsContextFactory.GeoEventIdForDelete));
         }
 

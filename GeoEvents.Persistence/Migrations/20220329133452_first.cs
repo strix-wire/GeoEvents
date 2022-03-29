@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GeoEvents.Persistence.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,7 @@ namespace GeoEvents.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GeoEvents",
+                name: "GeoEvent",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -64,13 +64,13 @@ namespace GeoEvents.Persistence.Migrations
                     CreationDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     EditDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Title = table.Column<string>(type: "text", nullable: false),
-                    Details = table.Column<string>(type: "text", nullable: false),
+                    Details = table.Column<string>(type: "text", nullable: true),
                     Latitude = table.Column<double>(type: "double precision", nullable: false),
                     Longitude = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GeoEvents", x => x.Id);
+                    table.PrimaryKey("PK_GeoEvent", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,12 +215,6 @@ namespace GeoEvents.Persistence.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GeoEvents_Id",
-                table: "GeoEvents",
-                column: "Id",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -241,7 +235,7 @@ namespace GeoEvents.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "GeoEvents");
+                name: "GeoEvent");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

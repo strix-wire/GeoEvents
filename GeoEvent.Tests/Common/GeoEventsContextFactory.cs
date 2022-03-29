@@ -27,7 +27,7 @@ namespace GeoEvents.Tests.Common
             //убедимся, что база создана
             context.Database.EnsureCreated();
             //заполняем бд тестовыми данными
-            context.GeoEvents.AddRange(
+            context.ConsideredGeoEvents.AddRange(
                 new GeoEvent
                 {
                     CreationDate = DateTime.Today,

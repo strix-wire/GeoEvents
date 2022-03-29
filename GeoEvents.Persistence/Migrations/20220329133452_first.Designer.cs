@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GeoEvents.Persistence.Migrations
 {
     [DbContext(typeof(GeoEventsDbContext))]
-    [Migration("20220321134352_firstMigration")]
-    partial class firstMigration
+    [Migration("20220329133452_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,6 @@ namespace GeoEvents.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("EditDate")
@@ -55,10 +54,7 @@ namespace GeoEvents.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
-                        .IsUnique();
-
-                    b.ToTable("GeoEvents");
+                    b.ToTable("GeoEvent");
                 });
 
             modelBuilder.Entity("GeoEvents.Persistence.IdentityEF.MyIdentityUser", b =>

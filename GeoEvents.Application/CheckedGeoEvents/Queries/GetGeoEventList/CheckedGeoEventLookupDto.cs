@@ -4,10 +4,10 @@ using GeoEvents.Domain;
 using GeoEvents.Application.Common.Mappings;
 
 
-namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
+namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList
 {
     //For get list GeoEvents.
-    public class ConsideredGeoEventLookupDto : IMapWith<GeoEvent>
+    public class CheckedGeoEventLookupDto : IMapWith<GeoEvent>
     {
         //Каждое событие списка должно иметь лишь те поля
         //которые нужна самому списку событий
@@ -16,7 +16,7 @@ namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<GeoEvent, ConsideredGeoEventLookupDto>()
+            profile.CreateMap<GeoEvent, CheckedGeoEventLookupDto>()
                 .ForMember(geoEventDto => geoEventDto.Id,
                     opt => opt.MapFrom(geoEvent => geoEvent.Id))
                 .ForMember(geoEventDto => geoEventDto.Title,

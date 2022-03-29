@@ -2,7 +2,7 @@
 using GeoEvents.Mvc.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
+using GeoEvents.Application.ConsideredGeoEvents.Commands.CreateGeoEvent;
 
 namespace GeoEvents.Mvc.Controllers
 {
@@ -12,13 +12,15 @@ namespace GeoEvents.Mvc.Controllers
         private readonly IMapper _mapper;
         public UserController(IMapper mapper) => _mapper = mapper;
 
-        [HttpGet]
-        public async Task<IActionResult> Create(CreateGeoEventDto createGeoEventDto)
+        //Подача заявки на рассмотрение
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateConsideredGeoEventDto createGeoEventDto)
         {
             //сформируем команду и добавим к ней id user
             var command = _mapper.Map<CreateConsideredGeoEventCommand>(createGeoEventDto);
             command.UserId = UserId;
-            var geoEventId = await Mediator.Send(command);
+            //var geoEventId = await Mediator.Send(command);
+            await Mediator.Send(command);
             return Redirect("Index");
         }
 
