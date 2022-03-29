@@ -2,11 +2,11 @@
 using GeoEvents.Domain;
 using AutoMapper;
 
-namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventDetails
+namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails
 {
     //Our view model. Class describing details which return user
     //Dont have UserId
-    public class ConsideredGeoEventDetailsVm : IMapWith<GeoEvent>
+    public class CheckedGeoEventDetailsVm : IMapWith<GeoEvent>
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -19,7 +19,7 @@ namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventDetails
         //Mapping between GeoEvent and GeoEventDetailsVm
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<GeoEvent, ConsideredGeoEventDetailsVm>()
+            profile.CreateMap<GeoEvent, CheckedGeoEventDetailsVm>()
                 .ForMember(geoEventVm => geoEventVm.Title,
                     opt => opt.MapFrom(geoEvent => geoEvent.Title))
                 .ForMember(geoEventVm => geoEventVm.Details,

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Threading;
 using System.Threading.Tasks;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventList;
+using GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList;
 using GeoEvents.Persistence;
 using GeoEvents.Tests.Common;
 using Shouldly;

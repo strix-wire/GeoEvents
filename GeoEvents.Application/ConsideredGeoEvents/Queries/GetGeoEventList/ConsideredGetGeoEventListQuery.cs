@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
+namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
 {
     public class ConsideredGetGeoEventListQuery : IRequest<ConsideredGeoEventListVm>
     {

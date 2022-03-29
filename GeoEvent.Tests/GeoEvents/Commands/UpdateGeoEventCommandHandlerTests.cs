@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using GeoEvents.Application.Common.Exceptions;
-using GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent;
+using GeoEvents.Application.ConsideredGeoEvents.Commands.UpdateGeoEvent;
 using GeoEvents.Tests.Common;
 using Xunit;
 
@@ -30,7 +30,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
             }, CancellationToken.None);
             
             // Assert
-            Assert.NotNull(await Context.GeoEvents.SingleOrDefaultAsync(note =>
+            Assert.NotNull(await Context.ConsideredGeoEvents.SingleOrDefaultAsync(note =>
                 note.Id == GeoEventsContextFactory.GeoEventIdForUpdate &&
                 note.Title == updatedTitle));
         }

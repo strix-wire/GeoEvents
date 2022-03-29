@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
 using GeoEvents.Tests.Common;
-using GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails;
+using GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventDetails;
 using GeoEvents.Persistence;
 
 namespace GeoEvents.Tests.GeoEvents.Queries

@@ -32,7 +32,6 @@ namespace GeoEvents.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("EditDate")
@@ -53,10 +52,7 @@ namespace GeoEvents.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id")
-                        .IsUnique();
-
-                    b.ToTable("GeoEvents");
+                    b.ToTable("GeoEvent");
                 });
 
             modelBuilder.Entity("GeoEvents.Persistence.IdentityEF.MyIdentityUser", b =>

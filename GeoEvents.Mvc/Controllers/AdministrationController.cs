@@ -18,7 +18,7 @@ namespace GeoEvents.Mvc.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Index()
         {
             return View();

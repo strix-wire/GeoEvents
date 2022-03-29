@@ -4,29 +4,29 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using GeoEvents.Application.Interfaces;
 
-namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
+namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList
 {
-    public class ConsideredGetGeoEventListQueryHandler
-        : IRequestHandler<ConsideredGetGeoEventListQuery, ConsideredGeoEventListVm>
+    public class CheckedGetGeoEventListQueryHandler
+        : IRequestHandler<CheckedGetGeoEventListQuery, CheckedGeoEventListVm>
     {
         private readonly IGeoEventsDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public ConsideredGetGeoEventListQueryHandler(IGeoEventsDbContext dbContext, IMapper mapper) =>
+        public CheckedGetGeoEventListQueryHandler(IGeoEventsDbContext dbContext, IMapper mapper) =>
             (_dbContext, _mapper) = (dbContext, mapper);
 
-        public async Task<ConsideredGeoEventListVm> Handle(ConsideredGetGeoEventListQuery request,
+        public async Task<CheckedGeoEventListVm> Handle(CheckedGetGeoEventListQuery request,
             CancellationToken cancellationToken)
         {
-            var GeoEventsQuery = await _dbContext.ConsideredGeoEvents
+            var GeoEventsQuery = await _dbContext.CheckedGeoEvents
                 .Where(geoEvent => geoEvent.UserId == request.UserId)
                 
                 //Метод расширения из automapper, который проецирует коллекцию в соответствии с заданной
                 //конфигурацией
-                .ProjectTo<ConsideredGeoEventLookupDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<CheckedGeoEventLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            return new ConsideredGeoEventListVm { GeoEvents = GeoEventsQuery };
+            return new CheckedGeoEventListVm { GeoEvents = GeoEventsQuery };
         }
 
     }

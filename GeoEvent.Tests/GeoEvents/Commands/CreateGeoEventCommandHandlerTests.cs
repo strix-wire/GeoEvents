@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent;
+using GeoEvents.Application.ConsideredGeoEvents.Commands.CreateGeoEvent;
 using GeoEvents.Tests.Common;
 using Xunit;
 
@@ -35,7 +35,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
             // Assert
             //Проверяем, что тестовый контекст содержит заметку с заданными id, названием и деталями
             Assert.NotNull(
-                await Context.GeoEvents.SingleOrDefaultAsync(note =>
+                await Context.ConsideredGeoEvents.SingleOrDefaultAsync(note =>
                     note.Id == noteId && note.Title == noteName &&
                     note.Details == noteDetails));
         }

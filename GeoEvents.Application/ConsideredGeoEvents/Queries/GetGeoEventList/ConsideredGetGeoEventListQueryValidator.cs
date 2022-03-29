@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
+namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
 {
     public class ConsideredGetGeoEventListQueryValidator : AbstractValidator<ConsideredGetGeoEventListQuery>
     {
