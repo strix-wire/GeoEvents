@@ -27,11 +27,11 @@ namespace GeoEvents.Tests.GeoEvents.Queries
         {
             // Arrange
 
-            var handler = new GetGeoEventDetailsQueryHandler(Context, Mapper);
+            var handler = new ConsideredGetGeoEventDetailsQueryHandler(Context, Mapper);
 
             // Act
             var result = await handler.Handle(
-                new GetGeoEventDetailsQuery
+                new ConsideredGetGeoEventDetailsQuery
                 {
                     UserId = GeoEventsContextFactory.UserBId,
                     Id = Guid.Parse("909F7C29-891B-4BE1-8504-21F84F262084")
@@ -39,7 +39,7 @@ namespace GeoEvents.Tests.GeoEvents.Queries
                 CancellationToken.None);
 
             // Assert
-            result.ShouldBeOfType<GeoEventDetailsVm>();
+            result.ShouldBeOfType<ConsideredGeoEventDetailsVm>();
             result.Title.ShouldBe("Title2");
             result.CreationDate.ShouldBe(DateTime.Today);
         }

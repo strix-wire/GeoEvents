@@ -3,19 +3,19 @@ using GeoEvents.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using GeoEvents.Application.Common.Exceptions;
 
-namespace GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.UpdateGeoEvent
 {
-    public class UpdateGeoEventCommandHandler : IRequestHandler<UpdateGeoEventCommand>
+    public class UpdateConsideredGeoEventCommandHandler : IRequestHandler<UpdateConsideredGeoEventCommand>
     {
         private readonly IGeoEventsDbContext _dbContext;
 
-        public UpdateGeoEventCommandHandler(IGeoEventsDbContext dbContext) =>
+        public UpdateConsideredGeoEventCommandHandler(IGeoEventsDbContext dbContext) =>
             _dbContext = dbContext;
-        public async Task<Unit> Handle(UpdateGeoEventCommand request,
+        public async Task<Unit> Handle(UpdateConsideredGeoEventCommand request,
             CancellationToken cancellationToken)
         {
             var entity =
-                await _dbContext.GeoEvents.FirstOrDefaultAsync(geoEvent =>
+                await _dbContext.ConsideredGeoEvents.FirstOrDefaultAsync(geoEvent =>
                 geoEvent.Id == request.Id, cancellationToken);
 
             //If GeoEvents not found or uncorrect id

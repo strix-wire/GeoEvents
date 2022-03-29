@@ -18,11 +18,11 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task UpdateGeoEventCommandHandler_Success()
         {
             // Arrange
-            var handler = new UpdateGeoEventCommandHandler(Context);
+            var handler = new UpdateConsideredGeoEventCommandHandler(Context);
             var updatedTitle = "new title";
 
             // Act
-            await handler.Handle(new UpdateGeoEventCommand
+            await handler.Handle(new UpdateConsideredGeoEventCommand
             {
                 Id = GeoEventsContextFactory.GeoEventIdForUpdate,
                 UserId = GeoEventsContextFactory.UserBId,
@@ -39,13 +39,13 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task UpdateGeoEventCommandHandler_FailOnWrongId()
         {
             // Arrange
-            var handler = new UpdateGeoEventCommandHandler(Context);
+            var handler = new UpdateConsideredGeoEventCommandHandler(Context);
 
             // Act
             // Assert
             await Assert.ThrowsAsync<NotFoundException>(async () =>
                 await handler.Handle(
-                    new UpdateGeoEventCommand
+                    new UpdateConsideredGeoEventCommand
                     {
                         Id = Guid.NewGuid(),
                         UserId = GeoEventsContextFactory.UserAId
@@ -57,14 +57,14 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task UpdateGeoEventCommandHandler_FailOnWrongUserId()
         {
             // Arrange
-            var handler = new UpdateGeoEventCommandHandler(Context);
+            var handler = new UpdateConsideredGeoEventCommandHandler(Context);
 
             // Act
             // Assert
             await Assert.ThrowsAsync<NotFoundException>(async () =>
             {
                 await handler.Handle(
-                    new UpdateGeoEventCommand
+                    new UpdateConsideredGeoEventCommand
                     {
                         Id = GeoEventsContextFactory.GeoEventIdForUpdate,
                         UserId = GeoEventsContextFactory.UserAId

@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.UpdateGeoEvent
 {
-    public class UpdateGeoEventCommandValidator : AbstractValidator<UpdateGeoEventCommand>
+    public class UpdateConsideredGeoEventCommandValidator : AbstractValidator<UpdateConsideredGeoEventCommand>
     {
-        public UpdateGeoEventCommandValidator()
+        public UpdateConsideredGeoEventCommandValidator()
         {
             RuleFor(updateGeoEventCommand => updateGeoEventCommand.UserId).NotEqual(Guid.Empty);
             RuleFor(updateGeoEventCommand => updateGeoEventCommand.Id).NotEqual(Guid.Empty);

@@ -9,8 +9,10 @@ namespace GeoEvents.Persistence
 {
     public class GeoEventsDbContext : IdentityDbContext<MyIdentityUser>, IGeoEventsDbContext
     {
-        public DbSet<GeoEvent> GeoEvents { get; set; }
-        
+
+        public DbSet<GeoEvent> ConsideredGeoEvents { get; set; }
+        public DbSet<GeoEvent> CheckedGeoEvents { get; set; }
+
         public GeoEventsDbContext(DbContextOptions<GeoEventsDbContext> options)
             : base(options) { }
 

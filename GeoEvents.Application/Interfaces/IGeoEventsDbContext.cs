@@ -7,7 +7,12 @@ namespace GeoEvents.Application.Interfaces
     public interface IGeoEventsDbContext
     {
         //DbSet - collection all entities in context
-        DbSet<GeoEvent> GeoEvents { get; set; }
+
+        //Подать заявку на рассмотрение
+        DbSet<GeoEvent> ConsideredGeoEvents { get; set; }
+        //Проверенные и одобренные события
+        DbSet<GeoEvent> CheckedGeoEvents { get; set; }
+        
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

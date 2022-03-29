@@ -13,12 +13,13 @@ namespace GeoEvents.Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             
-            //Добавляем валидотор из сборки
+            //Добавляем валидатор из сборки
             services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
 
             //Регистрируем PipelineBehavior
-            services.AddTransient(typeof(IPipelineBehavior<,>),
-                typeof(ValidationBehavior<,>));
+            //ТУТ ОШИБКА, НУЖНО РАЗОБРАТЬСЯ
+            //services.AddTransient(typeof(IPipelineBehavior<,>),
+            //    typeof(ValidationBehavior<,>));
             return services;
         }
     }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GeoEvents.Mvc.Controllers
 {
     [Authorize(Roles="Admin")]
-    public class AdministrationController : Controller
+    public class AdministrationController : BaseController
     {
         private readonly UserManager<MyIdentityUser> _userManager;
         readonly RoleManager<IdentityRole> _roleManager;
@@ -18,6 +18,7 @@ namespace GeoEvents.Mvc.Controllers
             _userManager = userManager;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -51,18 +52,35 @@ namespace GeoEvents.Mvc.Controllers
         //}
         #endregion
 
-        public async Task<IActionResult> MakeUserToAdmin()
-        {
-            var user = await _userManager.FindByIdAsync("49b723da-1cd9-483a-9447-a6c2115fddba");
+        #region MakeUserToAdmin
+        //public async Task<IActionResult> MakeUserToAdmin()
+        //{
+        //    var user = await _userManager.FindByIdAsync("49b723da-1cd9-483a-9447-a6c2115fddba");
 
-            var result = await _userManager.AddToRoleAsync(user, "Admin");
+        //    var result = await _userManager.AddToRoleAsync(user, "Admin");
 
-            return RedirectToAction("index", "home");
-        }
+        //    return RedirectToAction("index", "home");
+        //}
+        #endregion
 
+        [HttpGet]
         public IActionResult UserList() => View(_userManager.Users.ToList());
 
-        public async Task<IActionResult> EditUser(string userId)
+        [HttpGet]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+
+                return View("DeleteUserSuccessful", "Administration");
+            }
+            return NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditRoleUser(string userId)
         {
             // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId);
@@ -85,7 +103,7 @@ namespace GeoEvents.Mvc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(string userId, List<string> roles)
+        public async Task<IActionResult> EditRoleUser(string userId, List<string> roles)
         {
             // получаем пользователя
             var user = await _userManager.FindByIdAsync(userId);

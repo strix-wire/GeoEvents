@@ -28,7 +28,6 @@ namespace GeoEvents.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                //ИЗМЕНИ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 var user = new MyIdentityUser
                 {
                     UserName = model.Email,
@@ -36,9 +35,9 @@ namespace GeoEvents.Mvc.Controllers
                     Email = model.Email,
                     Surname = model.Surname,
                     MiddleName = model.MiddleName,
-                    DateOfBirth = model.DateOfBirth,
+                    //DateOfBirth = model.DateOfBirth,
                     City = model.City,
-                    Sex = model.Sex
+                    //Sex = model.Sex
                 };
                 //пароль хешируется сам и надежно хранится в бд
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -47,6 +46,7 @@ namespace GeoEvents.Mvc.Controllers
                 {
                     //false - сессионный файл куки
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    await _userManager.AddToRoleAsync(user, "User");
                     return RedirectToAction("index", "home");
                 }
 

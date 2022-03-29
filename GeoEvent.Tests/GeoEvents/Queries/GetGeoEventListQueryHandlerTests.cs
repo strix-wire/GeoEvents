@@ -27,18 +27,18 @@ namespace GeoEvents.Tests.GeoEvents.Queries
             // Arrange
             //Т.к. GetGeoEventListQueryHandler - принимает не только Context, но еще и Mapper
             //То создадим вспомогательный класс QueryTestFixture.
-            var handler = new GetGeoEventListQueryHandler(Context, Mapper);
+            var handler = new ConsideredGetGeoEventListQueryHandler(Context, Mapper);
 
             // Act
             var result = await handler.Handle(
-                new GetGeoEventListQuery
+                new ConsideredGetGeoEventListQuery
                 {
                     UserId = GeoEventsContextFactory.UserBId
                 },
                 CancellationToken.None);
 
             // Assert
-            result.ShouldBeOfType<GeoEventListVm>();
+            result.ShouldBeOfType<ConsideredGeoEventListVm>();
             result.GeoEvents.Count.ShouldBe(2);
         }
     }

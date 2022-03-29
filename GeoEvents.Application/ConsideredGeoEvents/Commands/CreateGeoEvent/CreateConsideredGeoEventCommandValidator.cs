@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
 
-namespace GeoEvents.Application.GeoEvents.Commands.CreateGeoEvent
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.CreateGeoEvent
 {
-    public class CreateUserCommandValidator : AbstractValidator<CreateGeoEventCommand>
+    public class CreateUserCommandValidator : AbstractValidator<CreateConsideredGeoEventCommand>
     {
         public CreateUserCommandValidator()
         {
-            //Длина заголовка заметки не более 250 символов.
+            //Длина заголовка GeoEvent не более 250 символов.
             //ID пользователя не должен быть пустым Guid.
             RuleFor(createGeoEventCommand =>
                 createGeoEventCommand.Title).NotEmpty().MaximumLength(250);
