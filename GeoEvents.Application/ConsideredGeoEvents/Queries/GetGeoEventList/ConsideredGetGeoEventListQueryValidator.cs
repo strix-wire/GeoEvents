@@ -2,9 +2,9 @@
 
 namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
 {
-    public class GetGeoEventListQueryValidator : AbstractValidator<GetGeoEventListQuery>
+    public class ConsideredGetGeoEventListQueryValidator : AbstractValidator<ConsideredGetGeoEventListQuery>
     {
-        public GetGeoEventListQueryValidator()
+        public ConsideredGetGeoEventListQueryValidator()
         {
             RuleFor(x => x.UserId).NotEqual(Guid.Empty);
         }

@@ -6,18 +6,20 @@ namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails
 {
     //Our view model. Class describing details which return user
     //Dont have UserId
-    public class GeoEventDetailsVm : IMapWith<GeoEvent>
+    public class ConsideredGeoEventDetailsVm : IMapWith<GeoEvent>
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public string Details { get; set; }
+        public string? Details { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? EditDate { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         //Mapping between GeoEvent and GeoEventDetailsVm
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<GeoEvent, GeoEventDetailsVm>()
+            profile.CreateMap<GeoEvent, ConsideredGeoEventDetailsVm>()
                 .ForMember(geoEventVm => geoEventVm.Title,
                     opt => opt.MapFrom(geoEvent => geoEvent.Title))
                 .ForMember(geoEventVm => geoEventVm.Details,

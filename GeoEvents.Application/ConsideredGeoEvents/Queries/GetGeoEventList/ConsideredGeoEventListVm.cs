@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
 {
-    public class GeoEventListVm
+    public class ConsideredGeoEventListVm
     {
-        public IList<GeoEventLookupDto> GeoEvents { get; set; }
+        public IList<ConsideredGeoEventLookupDto> GeoEvents { get; set; }
     }
 }

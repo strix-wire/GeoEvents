@@ -7,15 +7,15 @@ using GeoEvents.Domain;
 
 namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails
 {
-    public class GetGeoEventDetailsQueryHandler
-        : IRequestHandler<GetGeoEventDetailsQuery, GeoEventDetailsVm>
+    public class ConsideredGetGeoEventDetailsQueryHandler
+        : IRequestHandler<ConsideredGetGeoEventDetailsQuery, ConsideredGeoEventDetailsVm>
     {
         private readonly IGeoEventsDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetGeoEventDetailsQueryHandler(IGeoEventsDbContext dbContext,
+        public ConsideredGetGeoEventDetailsQueryHandler(IGeoEventsDbContext dbContext,
             IMapper mapper) => (_dbContext, _mapper) = (dbContext, mapper);
-        public async Task<GeoEventDetailsVm> Handle(GetGeoEventDetailsQuery request,
+        public async Task<ConsideredGeoEventDetailsVm> Handle(ConsideredGetGeoEventDetailsQuery request,
             CancellationToken cancellationToken)
         {
             var entity = await _dbContext.GeoEvents
@@ -27,7 +27,7 @@ namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventDetails
                 throw new NotFoundException(nameof(GeoEvent), request.Id);
             }
 
-            return _mapper.Map<GeoEventDetailsVm>(entity);
+            return _mapper.Map<ConsideredGeoEventDetailsVm>(entity);
         }
     }
 }

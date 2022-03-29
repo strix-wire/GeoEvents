@@ -15,7 +15,7 @@ namespace GeoEvents.Domain
         public DateTime CreationDate { get; set; }
         public DateTime? EditDate { get; set; }
         public string Title { get; set; }
-        public string Details { get; set; }
+        public string? Details { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
     }

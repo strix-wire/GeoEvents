@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace GeoEvents.Application.GeoEvents.Commands.UpdateGeoEvent
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.UpdateGeoEvent
 {
-    public class UpdateGeoEventCommand : IRequest
+    public class UpdateConsideredGeoEventCommand : IRequest
     {
         public Guid UserId { get; set; }
         public Guid Id { get; set; }

@@ -6,27 +6,27 @@ using GeoEvents.Application.Interfaces;
 
 namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
 {
-    public class GetGeoEventListQueryHandler
-        : IRequestHandler<GetGeoEventListQuery, GeoEventListVm>
+    public class ConsideredGetGeoEventListQueryHandler
+        : IRequestHandler<ConsideredGetGeoEventListQuery, ConsideredGeoEventListVm>
     {
         private readonly IGeoEventsDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public GetGeoEventListQueryHandler(IGeoEventsDbContext dbContext, IMapper mapper) =>
+        public ConsideredGetGeoEventListQueryHandler(IGeoEventsDbContext dbContext, IMapper mapper) =>
             (_dbContext, _mapper) = (dbContext, mapper);
 
-        public async Task<GeoEventListVm> Handle(GetGeoEventListQuery request,
+        public async Task<ConsideredGeoEventListVm> Handle(ConsideredGetGeoEventListQuery request,
             CancellationToken cancellationToken)
         {
-            var GeoEventsQuery = await _dbContext.GeoEvents
+            var GeoEventsQuery = await _dbContext.ConsideredGeoEvents
                 .Where(geoEvent => geoEvent.UserId == request.UserId)
                 
                 //Метод расширения из automapper, который проецирует коллекцию в соответствии с заданной
                 //конфигурацией
-                .ProjectTo<GeoEventLookupDto>(_mapper.ConfigurationProvider)
+                .ProjectTo<ConsideredGeoEventLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-            return new GeoEventListVm { GeoEvents = GeoEventsQuery };
+            return new ConsideredGeoEventListVm { GeoEvents = GeoEventsQuery };
         }
 
     }

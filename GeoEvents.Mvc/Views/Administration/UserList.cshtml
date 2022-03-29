@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<GeoEvents.Persistence.IdentityEF.MyIdentityUser>
 
-<h2>Список пользователей</h2>
-<table class="table">
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@user.Email</td>
-            <td>
-                <a class="btn btn-sm btn-primary" asp-action="EditUser" asp-route-userid="@user.Id">Права доступа</a>
-            </td>
-        </tr>
-    }
-</table>
+<div class="container">
+    <h2>Список пользователей</h2>
+    <table class="table">
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="EditRoleUser" asp-route-userid="@user.Id">Редактирование роли пользователя</a>
+                    <a class="btn btn-sm btn-primary" asp-action="DeleteUser" asp-route-userid="@user.Id">Удалить пользователя</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

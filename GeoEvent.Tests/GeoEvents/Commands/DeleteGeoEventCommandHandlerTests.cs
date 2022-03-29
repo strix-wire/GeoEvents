@@ -19,10 +19,10 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task DeleteGeoEventCommandHandler_Success()
         {
             // Arrange
-            var handler = new DeleteGeoEventCommandHandler(Context);
+            var handler = new DeleteConsideredGeoEventCommandHandler(Context);
 
             // Act
-            await handler.Handle(new DeleteGeoEventCommand
+            await handler.Handle(new DeleteConsideredGeoEventCommand
             {
                 Id = GeoEventsContextFactory.GeoEventIdForDelete,
                 UserId = GeoEventsContextFactory.UserAId
@@ -38,7 +38,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task DeleteGeoEventCommandHandler_FailOnWrongId()
         {
             // Arrange
-            var handler = new DeleteGeoEventCommandHandler(Context);
+            var handler = new DeleteConsideredGeoEventCommandHandler(Context);
 
             // Act
             // Assert
@@ -46,7 +46,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
             //в качестве параметра метода - функция удаления заметки
             await Assert.ThrowsAsync<NotFoundException>(async () =>
                 await handler.Handle(
-                    new DeleteGeoEventCommand
+                    new DeleteConsideredGeoEventCommand
                     {
                         Id = Guid.NewGuid(),
                         UserId = GeoEventsContextFactory.UserAId
@@ -58,10 +58,10 @@ namespace GeoEvents.Tests.GeoEvents.Commands
         public async Task DeleteGeoEventCommandHandler_FailOnWrongUserId()
         {
             // Arrange
-            var deleteHandler = new DeleteGeoEventCommandHandler(Context);
-            var createHandler = new CreateGeoEventCommandHandler(Context);
+            var deleteHandler = new DeleteConsideredGeoEventCommandHandler(Context);
+            var createHandler = new CreateConsideredGeoEventCommandHandler(Context);
             var noteId = await createHandler.Handle(
-                new CreateGeoEventCommand
+                new CreateConsideredGeoEventCommand
                 {
                     Title = "GeoEventTitle",
                     UserId = GeoEventsContextFactory.UserAId
@@ -71,7 +71,7 @@ namespace GeoEvents.Tests.GeoEvents.Commands
             // Assert
             await Assert.ThrowsAsync<NotFoundException>(async () =>
                 await deleteHandler.Handle(
-                    new DeleteGeoEventCommand
+                    new DeleteConsideredGeoEventCommand
                     {
                         Id = noteId,
                         UserId = GeoEventsContextFactory.UserBId

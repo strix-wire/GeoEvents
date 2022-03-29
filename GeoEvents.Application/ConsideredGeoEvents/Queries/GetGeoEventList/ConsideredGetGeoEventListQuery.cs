@@ -2,7 +2,7 @@
 
 namespace GeoEvents.Application.GeoEvents.Queries.GetGeoEventList
 {
-    public class GetGeoEventListQuery : IRequest<GeoEventListVm>
+    public class ConsideredGetGeoEventListQuery : IRequest<ConsideredGeoEventListVm>
     {
         public Guid UserId { get; set; }
     }

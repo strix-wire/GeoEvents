@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace GeoEvents.Application.GeoEvents.Commands.DeleteCommand
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.DeleteGeoEvent
 {
-    public class DeleteGeoEventCommandValidator : AbstractValidator<DeleteGeoEventCommand>
+    public class DeleteConsideredGeoEventCommandValidator : AbstractValidator<DeleteConsideredGeoEventCommand>
     {
-        public DeleteGeoEventCommandValidator()
+        public DeleteConsideredGeoEventCommandValidator()
         {
             RuleFor(deleteGeoEventCommand => deleteGeoEventCommand.Id).NotEqual(Guid.Empty);
             RuleFor(deleteGeoEventCommand => deleteGeoEventCommand.UserId).NotEqual(Guid.Empty);

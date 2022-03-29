@@ -15,6 +15,6 @@ namespace GeoEvents.Domain
         public string DateOfBirth { get; set; }
         public string Email { get; set; }
         public string? City { get; set; }
-        public string Sex { get; set; }
+        public string? Sex { get; set; }
     }
 }

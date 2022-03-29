@@ -3,21 +3,21 @@ using GeoEvents.Application.Interfaces;
 using GeoEvents.Application.Common.Exceptions;
 using GeoEvents.Domain;
 
-namespace GeoEvents.Application.GeoEvents.Commands.DeleteCommand
+namespace GeoEvents.Application.ConsideredGeoEvents.Commands.DeleteGeoEvent
 {
-    public class DeleteGeoEventCommandHandler
-        : IRequestHandler<DeleteGeoEventCommand>
+    public class DeleteConsideredGeoEventCommandHandler
+        : IRequestHandler<DeleteConsideredGeoEventCommand>
     {
         private readonly IGeoEventsDbContext _dbContext;
 
-        public DeleteGeoEventCommandHandler(IGeoEventsDbContext dbContext) =>
+        public DeleteConsideredGeoEventCommandHandler(IGeoEventsDbContext dbContext) =>
             _dbContext = dbContext;
 
         //Unit - empty response from MediatR
-        public async Task<Unit> Handle(DeleteGeoEventCommand request,
+        public async Task<Unit> Handle(DeleteConsideredGeoEventCommand request,
             CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.GeoEvents
+            var entity = await _dbContext.ConsideredGeoEvents
                 .FindAsync(new object[] { request.Id }, cancellationToken);
 
             if (entity == null || entity.UserId != request.UserId)
@@ -25,7 +25,7 @@ namespace GeoEvents.Application.GeoEvents.Commands.DeleteCommand
                 throw new NotFoundException(nameof(GeoEvent),request.Id);
             }
 
-            _dbContext.GeoEvents.Remove(entity);
+            _dbContext.ConsideredGeoEvents.Remove(entity);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
