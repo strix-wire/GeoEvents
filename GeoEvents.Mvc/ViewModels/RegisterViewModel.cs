@@ -18,10 +18,6 @@ namespace GeoEvents.Mvc.ViewModels
         [Display(Name = "Отчество")]
         public string? MiddleName { get; set; }
 
-        //[Required(ErrorMessage = "Ввод дня рождения является обязательным")]
-        //[Display(Name = "День рождения")]
-        //public string? DateOfBirth { get; set; }
-
         [Required(ErrorMessage = "Ввод email является обязательным")]
         [EmailAddress]
         //remote - для проверки есть ли уже данный email
@@ -41,7 +37,5 @@ namespace GeoEvents.Mvc.ViewModels
         public string ConfirmPassword { get; set; }
         [Display(Name = "Город")]
         public string? City { get; set; }
-        //[Display(Name = "Пол")]
-        //public string Sex { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace GeoEvents.Tests.Common
             context.Database.EnsureCreated();
             //заполняем бд тестовыми данными
             context.ConsideredGeoEvents.AddRange(
-                new GeoEvent
+                new GeoEventConsidered
                 {
                     CreationDate = DateTime.Today,
                     Details = "Details1",
@@ -38,7 +38,7 @@ namespace GeoEvents.Tests.Common
                     Title = "Title1",
                     UserId = UserAId
                 },
-                new GeoEvent
+                new GeoEventConsidered
                 {
                     CreationDate = DateTime.Today,
                     Details = "Details2",
@@ -47,7 +47,7 @@ namespace GeoEvents.Tests.Common
                     Title = "Title2",
                     UserId = UserBId
                 },
-                new GeoEvent
+                new GeoEventConsidered
                 {
                     CreationDate = DateTime.Today,
                     Details = "Details3",
@@ -56,7 +56,7 @@ namespace GeoEvents.Tests.Common
                     Title = "Title3",
                     UserId = UserAId
                 },
-                new GeoEvent
+                new GeoEventConsidered
                 {
                     CreationDate = DateTime.Today,
                     Details = "Details4",

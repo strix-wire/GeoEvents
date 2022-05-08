@@ -10,6 +10,7 @@
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/myJs.js"></script>
 </head>
 <body>
     <header class="p-3 bg-dark text-white">
@@ -26,31 +27,40 @@
             <div class="text-end">
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <form method="post">
-                        <button type="submit" asp-action="logout" asp-controller="account" class="navlink-danger btn btn-link py-0" style="width:auto">
+                    <form>
+                        <button type="submit" asp-action="logout" asp-controller="account" class="btn btn-outline-light me-2" style="width:auto" formmethod="post">
                             Выйти @User.Identity.Name
                         </button>
-                    
-                    
+                        
+                        @if (!User.IsInRole("Admin") & !User.IsInRole("Moderator"))
+                        {
+                            <button asp-action="CreateConsiderEvent" asp-controller="user" type="submit" formmethod="get" class="btn btn-outline-light me-2" style="width:auto">
+                                Предложить создание события
+                            </button>   
+                        }
+
                         @if (User.IsInRole("Admin"))
                         {
-                            <button type="submit" asp-action="index" asp-controller="administration" class="navlink-danger btn btn-link py-0" style="width:auto">
+                            <button type="submit" asp-action="index" asp-controller="administration" formmethod="get" class="btn btn-outline-light me-2" style="width:auto">
                                 Действия роли: Администратор
                             </button>
                         }
+
                         @if (User.IsInRole("Moderator"))
                         {
-                            <button type="submit" asp-action="index" asp-controller="moderator" class="navlink-danger btn btn-link py-0" style="width:auto">
+                            <button type="submit" asp-action="index" asp-controller="moderator" formmethod="get" class="btn btn-outline-light me-2" style="width:auto">
                                 Действия роли: Модератор
-                            </button>
+                            </button>   
                         }
                     </form>
-                    
+                     
                 }
                 else
                 {
-                    <a class="btn btn-outline-light me-2" asp-action="login" asp-controller="account">Вход</a>
-                    <a class="btn btn-warning" asp-action="register" asp-controller="account">Регистрация</a>
+                    <form method="get">
+                        <a class="btn btn-outline-light me-2" asp-action="login" asp-controller="account">Вход</a>
+                        <a class="btn btn-warning" asp-action="register" asp-controller="account">Регистрация</a>
+                    </form>
                 }
                 
             </div>

@@ -1,6 +1,18 @@
 ﻿<div class="container">
     <h2>Возможности роли: Администратор</h2>
-    <a class="btn btn-outline-dark me-2" asp-action="UserList" asp-controller="Administration">
-        Редактирование пользователей
-    </a>
+
+    <form method="get">
+        <a class="btn btn-outline-dark me-2" asp-action="UserList">
+            Редактирование пользователей
+        </a>
+        <a class="btn btn-outline-dark me-2" type="submit" asp-action="GetListConsiderationOfRequestForNewEvents"ы class="btn btn-outline-light me-2" style="width:auto">
+            Редактирование предложенных событий
+        </a>
+        <a class="btn btn-outline-dark me-2" asp-action="GetListCheckedEvents">
+            Редактирование созданных событий
+        </a>
+        <a class="btn btn-outline-dark me-2" type="submit" asp-action="CreateCheckedEvent" class="btn btn-outline-light me-2" style="width:auto">
+            Создать событие
+        </a>
+    </form>
 </div>

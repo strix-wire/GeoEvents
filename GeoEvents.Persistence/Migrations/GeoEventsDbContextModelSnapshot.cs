@@ -22,7 +22,7 @@ namespace GeoEvents.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("GeoEvents.Domain.GeoEvent", b =>
+            modelBuilder.Entity("GeoEvents.Domain.GeoEventChecked", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -52,7 +52,43 @@ namespace GeoEvents.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GeoEvent");
+                    b.ToTable("CheckedGeoEvents");
+                });
+
+            modelBuilder.Entity("GeoEvents.Domain.GeoEventConsidered", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Details")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("EditDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("ConsideredGeoEvents");
                 });
 
             modelBuilder.Entity("GeoEvents.Persistence.IdentityEF.MyIdentityUser", b =>
@@ -71,7 +107,6 @@ namespace GeoEvents.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("DateOfBirth")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
@@ -88,7 +123,6 @@ namespace GeoEvents.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -116,7 +150,6 @@ namespace GeoEvents.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Sex")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Surname")

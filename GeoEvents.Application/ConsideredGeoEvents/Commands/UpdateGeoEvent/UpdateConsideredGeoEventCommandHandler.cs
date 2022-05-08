@@ -19,7 +19,7 @@ namespace GeoEvents.Application.ConsideredGeoEvents.Commands.UpdateGeoEvent
                 geoEvent.Id == request.Id, cancellationToken);
 
             //If GeoEvents not found or uncorrect id
-            if (entity == null || entity.UserId != request.UserId)
+            if (entity == null)
             {
                 throw new NotFoundException(nameof(GeoEvents), request.Id);
             }

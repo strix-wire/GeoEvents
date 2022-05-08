@@ -24,7 +24,7 @@ let map = null
 //    marker = new L.Marker([parseFloat(latitude), parseFloat(longitude)], size).addTo(map).bindPopup(nameBranch).openPopup()
 //}
 
-function StartMap() {
+function StartMap(checkedGeoEventListVm) {
     //let DbForMap = document.getElementById('DbForMap');
     //var inputData = DbForMap.className;
     //inputData=inputData.replace("[", "");
@@ -32,9 +32,11 @@ function StartMap() {
     //const arrays = inputData.split('|')
     //let id = arrays[0].split(',')
     //let name = arrays[1].split(',')
-    //let lat = arrays[2].split(',')
+    //let lat = checkedGeoEventListVm.geoEvents.
     //let lon = arrays[3].split(',')
-    let count = 0 //id.length
+    console.log("StartMap");
+    console.log(checkedGeoEventListVm);
+    let count = checkedGeoEventListVm.geoEvents.length //id.length
 
     map = L.map('map').setView([parseFloat(56.4977100), parseFloat(84.9743700)], 11)
 
@@ -48,7 +50,7 @@ function StartMap() {
 
     function populate() {
         for (var i = 0; i < count; i++) {
-            var m = new L.Marker([parseFloat(lat[i]), parseFloat(lon[i])]).bindPopup(name[i]).on("click", onMapClick);
+            var m = new L.Marker([parseFloat(checkedGeoEventListVm.geoEvents[i].latitude), parseFloat(checkedGeoEventListVm.geoEvents[i].longitude)]).bindPopup(checkedGeoEventListVm.geoEvents[i].title).on("click", onMapClick);
             markersList.push(m);
             markers.addLayer(m);
         }
@@ -61,7 +63,7 @@ function StartMap() {
     function onMapClick(e) {
         var z;
         for (var i = 0; i <= count; i++) {
-            if (e.latlng.lat==lat[i] & e.latlng.lng==lon[i]) {
+            if (e.latlng.lat == checkedGeoEventListVm.geoEvents[i].latitude & e.latlng.lng == checkedGeoEventListVm.geoEvents[i].longitude) {
                 z = i;
             }
         }

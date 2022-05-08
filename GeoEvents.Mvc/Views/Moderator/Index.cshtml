@@ -1,9 +1,14 @@
 ﻿<div class="container">
     <h2>Возможности роли: Модератор</h2>
-    <a class="btn btn-outline-dark me-2" asp-action="" asp-controller="Moderator">
-        Рассмотрение заявок на новые события
-    </a>
-    <a class="btn btn-outline-dark me-2" asp-action="" asp-controller="Moderator">
-        Редактирование созданных событий
-    </a>
+    <form method="get">
+        <a class="btn btn-outline-dark me-2" type="submit" asp-action="CreateCheckedEvent" class="btn btn-outline-light me-2" style="width:auto">
+            Создать событие
+        </a>
+        <a class="btn btn-outline-dark me-2" asp-action="GetListConsiderationOfRequestForNewEvents">
+            Редактирование предложенных событий
+        </a>
+        <a class="btn btn-outline-dark me-2" asp-action="GetListCheckedEvents">
+            Редактирование созданных событий
+        </a>
+    </form>
 </div>
