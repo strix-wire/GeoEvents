@@ -1,0 +1,27 @@
+﻿@using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList
+@model CheckedGeoEventListVm
+
+<div class="container">
+    <div>
+        <h1>Список созданных событий</h1>
+    </div>
+    <table class="table">
+        @foreach (var geoEvent in Model.GeoEvents)
+        {
+            <tr>
+                <td>@geoEvent.Title</td>
+                <td>
+                    <form class="form-inline">
+                        <button asp-action="DeleteCheckedEvent" asp-route-id="@geoEvent.Id" type="submit" class="btn btn-sm btn-danger" formmethod="post">
+                            Удалить
+                        </button>
+                        <button asp-action="EditCheckedEvent" asp-route-id="@geoEvent.Id" type="submit" class="btn btn-sm btn-danger" formmethod="get">
+                            Редактирование
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>   
+</div>
+
