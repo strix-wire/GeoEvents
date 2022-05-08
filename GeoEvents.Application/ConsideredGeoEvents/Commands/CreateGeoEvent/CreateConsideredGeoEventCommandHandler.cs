@@ -16,7 +16,7 @@ namespace GeoEvents.Application.ConsideredGeoEvents.Commands.CreateGeoEvent
         public async Task<Guid> Handle(CreateConsideredGeoEventCommand request,
             CancellationToken cancellationToken)
         {
-            var geoEvent = new GeoEvent
+            var geoEvent = new GeoEventConsidered
             {
                 UserId = request.UserId,
                 Id = Guid.NewGuid(),

@@ -22,9 +22,9 @@ namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails
                 .FirstOrDefaultAsync(geoEvent =>
                 geoEvent.Id == request.Id, cancellationToken);
 
-            if (entity == null || entity.UserId != request.UserId)
+            if (entity == null)
             {
-                throw new NotFoundException(nameof(GeoEvent), request.Id);
+                throw new NotFoundException(nameof(GeoEventChecked), request.Id);
             }
 
             return _mapper.Map<CheckedGeoEventDetailsVm>(entity);

@@ -19,7 +19,7 @@ namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList
             CancellationToken cancellationToken)
         {
             var GeoEventsQuery = await _dbContext.CheckedGeoEvents
-                .Where(geoEvent => geoEvent.UserId == request.UserId)
+                //.Where(geoEvent => geoEvent.UserId == request.UserId)
                 
                 //Метод расширения из automapper, который проецирует коллекцию в соответствии с заданной
                 //конфигурацией

@@ -18,17 +18,22 @@ namespace GeoEvents.Application.Common.Behaviors
             CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             var context = new ValidationContext<TRequest>(request);
-            var failures = _validators
-                .Select(v => v.Validate(context))
-                .SelectMany(result => result.Errors)
-                .Where(failure => failure != null)
-                .ToList();
-
-            //Если есть хоть одна ошибка валидации => исключение ValidationException
-            if (failures.Count != 0)
+            
+            if (_validators != null)
             {
-                throw new ValidationException(failures);
+                var failures = _validators
+                    .Select(v => v.Validate(context))
+                    .SelectMany(result => result.Errors)
+                    .Where(failure => failure != null)
+                    .ToList();
+
+                //Если есть хоть одна ошибка валидации => исключение ValidationException
+                if (failures.Count != 0)
+                {
+                    throw new ValidationException(failures);
+                }
             }
+
             return next();
         }
     }

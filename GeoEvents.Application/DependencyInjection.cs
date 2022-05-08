@@ -18,8 +18,8 @@ namespace GeoEvents.Application
 
             //Регистрируем PipelineBehavior
             //ТУТ ОШИБКА, НУЖНО РАЗОБРАТЬСЯ
-            //services.AddTransient(typeof(IPipelineBehavior<,>),
-            //    typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
             return services;
         }
     }

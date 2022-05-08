@@ -20,9 +20,9 @@ namespace GeoEvents.Application.CheckedGeoEvents.Commands.DeleteGeoEvent
             var entity = await _dbContext.CheckedGeoEvents
                 .FindAsync(new object[] { request.Id }, cancellationToken);
 
-            if (entity == null || entity.UserId != request.UserId)
+            if (entity == null)
             {
-                throw new NotFoundException(nameof(GeoEvent),request.Id);
+                throw new NotFoundException(nameof(GeoEventConsidered),request.Id);
             }
 
             _dbContext.CheckedGeoEvents.Remove(entity);

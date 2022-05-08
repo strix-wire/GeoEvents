@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using GeoEvents.Mvc.Models;
+using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails;
+using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +12,16 @@ namespace GeoEvents.Mvc.Controllers
         public HomeController(IMapper mapper) => _mapper = mapper;
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var queryListGeoEvent = new CheckedGetGeoEventListQuery()
+            {
+                UserId = UserId
+            };
+
+            var listGeoEvent = await Mediator.Send(queryListGeoEvent);
+
+            return View(listGeoEvent);
         }
 
         ////Get list GeoEvents

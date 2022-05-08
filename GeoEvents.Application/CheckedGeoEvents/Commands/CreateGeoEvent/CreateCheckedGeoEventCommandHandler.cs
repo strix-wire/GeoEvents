@@ -16,7 +16,7 @@ namespace GeoEvents.Application.CheckedGeoEvents.Commands.CreateGeoEvent
         public async Task<Guid> Handle(CreateCheckedGeoEventCommand request,
             CancellationToken cancellationToken)
         {
-            var geoEvent = new GeoEvent
+            var geoEvent = new GeoEventChecked
             {
                 UserId = request.UserId,
                 Id = Guid.NewGuid(),

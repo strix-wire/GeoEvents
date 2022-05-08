@@ -10,15 +10,16 @@ namespace GeoEvents.Tests.GeoEvents.Commands
 {
     public class CreateGeoEventCommandHandlerTests : TestCommandBase
     {
-        //[Fact] - метод который должен быть запущен во время прогона теста
         [Fact]
         public async Task CreateGeoEventCommandHandler_Success()
         {
             //Arrange - подготовка данных для теста
             // Arrange
             var handler = new CreateConsideredGeoEventCommandHandler(Context);
-            var noteName = "note name";
-            var noteDetails = "note details";
+            var noteName = "geoEvent name";
+            var noteDetails = "geoEvent details";
+            var longitude = 56.510645;
+            var latitude = 84.9714037;
 
             //Act - логика
             // Act
@@ -27,6 +28,8 @@ namespace GeoEvents.Tests.GeoEvents.Commands
                 {
                     Title = noteName,
                     Details = noteDetails,
+                    Longitude = longitude,
+                    Latitude = latitude,
                     UserId = GeoEventsContextFactory.UserAId
                 },
                 CancellationToken.None);

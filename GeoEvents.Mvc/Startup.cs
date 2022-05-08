@@ -12,22 +12,28 @@ using GeoEvents.Mvc.Middleware;
 using GeoEvents.Application.Common.Mappings;
 using GeoEvents.Application.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using GeoEvents.Mvc.Models;
 using GeoEvents.Persistence.IdentityEF;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace GeoEvents.Mvc
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        //private IHttpContextAccessor httpContextAccessor;
 
-        public Startup(IConfiguration configuration) => Configuration = configuration;
+        public Startup(IConfiguration configuration) 
+        {
+            Configuration = configuration;
+          //  this.httpContextAccessor = httpContextAccessor;
+        } 
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentity<MyIdentityUser,IdentityRole>()
                 .AddEntityFrameworkStores<GeoEventsDbContext>();
-
+            //services.AddHttpContextAccessor();
+            //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //Определяем параметры пароля
             services.Configure<IdentityOptions>(options =>
             {
@@ -59,7 +65,7 @@ namespace GeoEvents.Mvc
                 });
             });
 
-            services.AddHttpContextAccessor();
+            //services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -68,7 +74,8 @@ namespace GeoEvents.Mvc
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            //accessor.HttpContext.RequestServices;
             app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseHttpsRedirection();
@@ -76,6 +83,7 @@ namespace GeoEvents.Mvc
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseStaticFiles();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

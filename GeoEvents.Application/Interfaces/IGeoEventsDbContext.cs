@@ -9,9 +9,9 @@ namespace GeoEvents.Application.Interfaces
         //DbSet - collection all entities in context
 
         //Подать заявку на рассмотрение
-        DbSet<GeoEvent> ConsideredGeoEvents { get; set; }
+        DbSet<GeoEventConsidered> ConsideredGeoEvents { get; set; }
         //Проверенные и одобренные события
-        DbSet<GeoEvent> CheckedGeoEvents { get; set; }
+        DbSet<GeoEventChecked> CheckedGeoEvents { get; set; }
         
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

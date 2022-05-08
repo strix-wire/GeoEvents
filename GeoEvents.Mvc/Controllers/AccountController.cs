@@ -1,4 +1,5 @@
-﻿using GeoEvents.Mvc.Models;
+﻿using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList;
+using GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList;
 using GeoEvents.Mvc.ViewModels;
 using GeoEvents.Persistence.IdentityEF;
 using Microsoft.AspNetCore.Identity;
@@ -45,8 +46,8 @@ namespace GeoEvents.Mvc.Controllers
                 if (result.Succeeded)
                 {
                     //false - сессионный файл куки
-                    await _signInManager.SignInAsync(user, isPersistent: false);
                     await _userManager.AddToRoleAsync(user, "User");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("index", "home");
                 }
 
@@ -88,7 +89,7 @@ namespace GeoEvents.Mvc.Controllers
                 }
 
                 //если не успешно
-                ModelState.AddModelError(string.Empty, "Неверный логин или пароль");
+                ModelState.AddModelError(string.Empty, "Неверный email или пароль");
             }
 
             return View(model);
@@ -109,5 +110,31 @@ namespace GeoEvents.Mvc.Controllers
                 return Json($"Email {email} уже используется");
             }
         }
+
+        ////Список предложенных событий
+        //[HttpGet]
+        //public async Task<ActionResult<ConsideredGeoEventListVm>> GetListConsiderationOfRequestForNewEvents()
+        //{
+        //    var query = new ConsideredGetGeoEventListQuery()
+        //    {
+        //        UserId = UserId
+        //    };
+        //    var vm = await Mediator.Send(query);
+
+        //    return View(vm);
+        //}
+
+        ////Список созданных событий
+        //[HttpGet]
+        //public async Task<ActionResult<CheckedGeoEventListVm>> GetListCheckedEvents()
+        //{
+        //    var query = new CheckedGetGeoEventListQuery()
+        //    {
+        //        UserId = UserId
+        //    };
+        //    var vm = await Mediator.Send(query);
+
+        //    return View(vm);
+        //}
     }
 }
