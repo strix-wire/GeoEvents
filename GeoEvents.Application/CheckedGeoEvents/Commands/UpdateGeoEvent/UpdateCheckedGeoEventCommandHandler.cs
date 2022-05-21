@@ -28,6 +28,8 @@ namespace GeoEvents.Application.CheckedGeoEvents.Commands.UpdateGeoEvent
             entity.Details = request.Details;
             entity.Title = request.Title;
             entity.EditDate = DateTime.Now;
+            entity.Latitude = request.Latitude;
+            entity.Longitude = request.Longitude;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

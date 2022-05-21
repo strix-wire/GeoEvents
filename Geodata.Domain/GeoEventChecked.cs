@@ -8,9 +8,7 @@ namespace GeoEvents.Domain
 {
     public class GeoEventChecked
     {
-        //Id event
         public Guid Id { get; set; }
-        //Id user which created event
         public Guid UserId { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? EditDate { get; set; }
