@@ -16,7 +16,7 @@ namespace GeoEvents.Persistence
         //Метод расширения для добавления контекста БД в веб приложение и его регистрация
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = configuration["DbConnection"] };
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = Path.GetDirectoryName(Directory.GetCurrentDirectory()) + "\\Db" + "\\GeoEventSqlite.db" };
             var connectionString = connectionStringBuilder.ToString();
             var connection = new SqliteConnection(connectionString);
 

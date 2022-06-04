@@ -13,7 +13,7 @@ namespace GeoEvents.Mvc
             //    .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             //
             using (var scope = host.Services.CreateScope())
             {
