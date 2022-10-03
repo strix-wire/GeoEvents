@@ -15,11 +15,11 @@ namespace GeoEvents.Mvc.ViewModels
         [Required(ErrorMessage = "Ввод координаты широты события является обязательным")]
         [Display(Name = "Широта")]
         [Range(0, double.MaxValue, ErrorMessage = "Широта должна быть дробным значением")]
-        public double Latitude { get; set; }
+        public string Latitude { get; set; }
 
         [Required(ErrorMessage = "Ввод координаты долготы события является обязательным")]
         [Display(Name = "Долгота")]
         [Range(float.MinValue, float.MaxValue, ErrorMessage = "Долгота должна быть дробным значением")]
-        public double Longitude { get; set; }
+        public string Longitude { get; set; }
     }
 }

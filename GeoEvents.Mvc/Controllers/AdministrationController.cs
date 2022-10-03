@@ -22,11 +22,14 @@ namespace GeoEvents.Mvc.Controllers
         private readonly UserManager<MyIdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IMapper _mapper;
+        private readonly ILogger<AdministrationController> _logger;
 
         public AdministrationController(RoleManager<IdentityRole> roleManager,
                                         UserManager<MyIdentityUser> userManager,
-                                        IMapper mapper)
+                                        IMapper mapper,
+                                        ILogger<AdministrationController> logger)
         {
+            _logger = logger;
             _roleManager = roleManager;
             _userManager = userManager;
             _mapper = mapper;
@@ -211,7 +214,10 @@ namespace GeoEvents.Mvc.Controllers
         public async Task<IActionResult> CreateCheckedEvent(CreateCheckedGeoEventDto createCheckedGeoEventDto)
         {
             //сформируем команду и добавим к ней id user
+            
+            _logger.LogWarning("Создана широта: " + createCheckedGeoEventDto.Latitude.ToString());
             var command = _mapper.Map<CreateCheckedGeoEventCommand>(createCheckedGeoEventDto);
+            _logger.LogWarning("Широта после маппинга: " + command.Latitude);
             command.UserId = UserId;
             await Mediator.Send(command);
 

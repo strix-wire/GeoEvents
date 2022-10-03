@@ -13,8 +13,8 @@ namespace GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails
         public string? Details { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime? EditDate { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
 
         //Mapping between GeoEvent and GeoEventDetailsVm
         public void Mapping(Profile profile)

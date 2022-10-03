@@ -10,7 +10,7 @@ namespace GeoEvents.Mvc.ViewModels
         public string Title { get; set; }
         public string Details { get; set; }
         public string Latitude { get; set; }
-        public double Longitude { get; set; }
+        public string Longitude { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UpdateCheckedGeoEventDto, UpdateCheckedGeoEventCommand>()

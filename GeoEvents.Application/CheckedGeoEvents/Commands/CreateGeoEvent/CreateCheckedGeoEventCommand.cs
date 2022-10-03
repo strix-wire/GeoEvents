@@ -12,7 +12,7 @@ namespace GeoEvents.Application.CheckedGeoEvents.Commands.CreateGeoEvent
         public Guid UserId { get; set; }
         public string Title { get; set; }
         public string Details { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }
