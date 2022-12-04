@@ -3,6 +3,8 @@ using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails;
 using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace GeoEvents.Mvc.Controllers 
 {
@@ -19,9 +21,22 @@ namespace GeoEvents.Mvc.Controllers
                 UserId = UserId
             };
 
-            var listGeoEvent = await Mediator.Send(queryListGeoEvent);
+            HttpRequestMessage httpRequestMessage = new();
+            httpRequestMessage.Method = HttpMethod.Get;
+            httpRequestMessage.RequestUri = new Uri("http://192.168.1.102:8565/api/v1/geodata/GetGeodataList");
 
-            return View(listGeoEvent);
+            var payload = new { UserId = Guid.NewGuid() };
+            var stringPayload = JsonConvert.SerializeObject(payload);
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+            httpRequestMessage.Content = httpContent;
+
+            HttpClient httpClient = new();
+            var httpResponse = await httpClient.SendAsync(httpRequestMessage);
+            var resString = await httpResponse.Content.ReadAsStringAsync();
+
+            var res = JsonConvert.DeserializeObject<CheckedGeoEventListVm>(resString);
+
+            return View(res);
         }
 
         ////Get list GeoEvents
