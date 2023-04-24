@@ -25,17 +25,6 @@ let map = null
 //}
 
 function StartMap(checkedGeoEventListVm) {
-    //let DbForMap = document.getElementById('DbForMap');
-    //var inputData = DbForMap.className;
-    //inputData=inputData.replace("[", "");
-    //inputData =inputData.replace("]", "");
-    //const arrays = inputData.split('|')
-    //let id = arrays[0].split(',')
-    //let name = arrays[1].split(',')
-    //let lat = checkedGeoEventListVm.geoEvents.
-    //let lon = arrays[3].split(',')
-    console.log("StartMap");
-    console.log(checkedGeoEventListVm);
     let count = checkedGeoEventListVm.geoEvents.length //id.length
 
     map = L.map('map').setView([parseFloat(56.4977100), parseFloat(84.9743700)], 11)
@@ -50,13 +39,13 @@ function StartMap(checkedGeoEventListVm) {
 
     function populate() {
         for (var i = 0; i < count; i++) {
-            var m = new L.Marker([parseFloat(checkedGeoEventListVm.geoEvents[i].latitude), parseFloat(checkedGeoEventListVm.geoEvents[i].longitude)]).bindPopup(checkedGeoEventListVm.geoEvents[i].title).on("click", onMapClick);
+            var m = new L.Marker([parseFloat(checkedGeoEventListVm.geoEvents[i].latitude), parseFloat(checkedGeoEventListVm.geoEvents[i].longitude)])
+                .bindPopup(checkedGeoEventListVm.geoEvents[i].title).on("click", onMapClick);
             markersList.push(m);
             markers.addLayer(m);
         }
         return false;
     }
-
     
     populate();
     map.addLayer(markers);

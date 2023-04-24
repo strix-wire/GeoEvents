@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Geodata.Persistence;
 
 namespace GeoEvents.Persistence
 {
     //Check at start application - is the database created. If not - will created.
     public class DbInitializer
     {
-        public static void Initialize(GeoEventsDbContext context)
+        public static void Initialize(GeodataDbContext context)
         {
             context.Database.EnsureCreated();
         }

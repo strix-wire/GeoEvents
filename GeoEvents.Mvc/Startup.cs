@@ -14,6 +14,8 @@ using GeoEvents.Application.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using GeoEvents.Persistence.IdentityEF;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Geodata.Application.Interfaces;
+using Geodata.Persistence;
 
 namespace GeoEvents.Mvc
 {
@@ -31,7 +33,7 @@ namespace GeoEvents.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentity<MyIdentityUser,IdentityRole>()
-                .AddEntityFrameworkStores<GeoEventsDbContext>();
+                .AddEntityFrameworkStores<GeodataDbContext>();
             //services.AddHttpContextAccessor();
             //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //Определяем параметры пароля
@@ -47,7 +49,7 @@ namespace GeoEvents.Mvc
             {
                 //Get information about current assembly in progress
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-                config.AddProfile(new AssemblyMappingProfile(typeof(IGeoEventsDbContext).Assembly));
+                config.AddProfile(new AssemblyMappingProfile(typeof(IGeodataDbContext).Assembly));
             });
 
             services.AddApplication();

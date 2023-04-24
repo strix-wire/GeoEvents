@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Persistence", "Ge
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Mvc", "GeoEvents.Mvc\GeoEvents.Mvc.csproj", "{D73EC632-636D-4A58-B01A-3A212DB2F7B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEvents.Tests", "GeoEvent.Tests\GeoEvents.Tests.csproj", "{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{D73EC632-636D-4A58-B01A-3A212DB2F7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D73EC632-636D-4A58-B01A-3A212DB2F7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D73EC632-636D-4A58-B01A-3A212DB2F7B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,7 +50,6 @@ Global
 		{6002CF37-37E4-4DEA-995B-58F3F31B62D9} = {82FE0079-B579-45EF-88F4-982ECDB90287}
 		{50BDB61B-06D9-4216-9483-E081BBBAF163} = {6C3165A8-AC3B-4C50-BA72-CD9EC8E962A6}
 		{D73EC632-636D-4A58-B01A-3A212DB2F7B9} = {B3847BFE-EEFF-48D8-8A80-52EF55194C5A}
-		{C06ADA6F-7F3D-4A62-8B7B-784A5DA07E99} = {5DD2DAC9-D8F0-468E-A1D9-4623FB1F8D9E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CA930C1-EB4D-4A4F-BDEA-6AE6B4C865A2}

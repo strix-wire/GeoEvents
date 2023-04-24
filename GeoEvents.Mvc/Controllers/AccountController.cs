@@ -1,6 +1,4 @@
-﻿using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList;
-using GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList;
-using GeoEvents.Mvc.ViewModels;
+﻿using GeoEvents.Mvc.ViewModels;
 using GeoEvents.Persistence.IdentityEF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

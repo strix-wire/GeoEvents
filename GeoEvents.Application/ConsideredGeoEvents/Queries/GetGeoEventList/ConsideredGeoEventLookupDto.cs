@@ -1,27 +1,45 @@
 ﻿using AutoMapper;
-using MediatR;
 using GeoEvents.Domain;
 using GeoEvents.Application.Common.Mappings;
-
+using Geodata.Domain;
 
 namespace GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList
 {
-    //For get list GeoEvents.
-    public class ConsideredGeoEventLookupDto : IMapWith<GeoEventConsidered>
+    public class ConsideredGeoEventLookupDto : IMapWith<GeodataDomain>
     {
-        //Каждое событие списка должно иметь лишь те поля
-        //которые нужна самому списку событий
+        //Each list event should only have those fields
+        //which the event list itself needs
         public Guid Id { get; set; }
         public string Title { get; set; }
+        public string? Details { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime? EditDate { get; set; }
+        /// <summary>
+        /// Checked by moderator
+        /// </summary>
+        public bool IsChecked { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<GeoEventConsidered, ConsideredGeoEventLookupDto>()
-                .ForMember(geoEventDto => geoEventDto.Id,
-                    opt => opt.MapFrom(geoEvent => geoEvent.Id))
-                .ForMember(geoEventDto => geoEventDto.Title,
-                    opt => opt.MapFrom(geoEvent => geoEvent.Title));
+            profile.CreateMap<GeodataDomain, ConsideredGeoEventLookupDto>()
+                .ForMember(geoDataDto => geoDataDto.Id,
+                    opt => opt.MapFrom(geoData => geoData.Id))
+                .ForMember(geoDataDto => geoDataDto.Title,
+                    opt => opt.MapFrom(geoData => geoData.Title))
+                .ForMember(geoDataDto => geoDataDto.Details,
+                    opt => opt.MapFrom(geoData => geoData.Details))
+                .ForMember(geoDataDto => geoDataDto.Latitude,
+                    opt => opt.MapFrom(geoData => geoData.Latitude))
+                .ForMember(geoDataDto => geoDataDto.Longitude,
+                    opt => opt.MapFrom(geoData => geoData.Longitude))
+                .ForMember(geoDataDto => geoDataDto.CreationDate,
+                    opt => opt.MapFrom(geoData => geoData.CreationDate))
+                .ForMember(geoDataDto => geoDataDto.EditDate,
+                    opt => opt.MapFrom(geoData => geoData.EditDate))
+                .ForMember(geoDataDto => geoDataDto.IsChecked,
+                    opt => opt.MapFrom(geoData => geoData.IsChecked));
         }
-
     }
 }

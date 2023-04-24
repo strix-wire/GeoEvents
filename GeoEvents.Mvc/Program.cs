@@ -1,4 +1,5 @@
-﻿using GeoEvents.Persistence;
+﻿using Geodata.Persistence;
+using GeoEvents.Persistence;
 
 namespace GeoEvents.Mvc
 {
@@ -21,7 +22,7 @@ namespace GeoEvents.Mvc
                 try
                 {
                     //Call initialize DB
-                    var context = serviceProvider.GetRequiredService<GeoEventsDbContext>();
+                    var context = serviceProvider.GetRequiredService<GeodataDbContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception exception)

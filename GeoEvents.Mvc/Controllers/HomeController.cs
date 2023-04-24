@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventDetails;
 using GeoEvents.Application.CheckedGeoEvents.Queries.GetGeoEventList;
+using GeoEvents.Application.ConsideredGeoEvents.Queries.GetGeoEventList;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace GeoEvents.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var queryListGeoEvent = new CheckedGetGeoEventListQuery()
+            var queryListGeoEvent = new ConsideredGetGeoEventListQuery()
             {
                 UserId = UserId
             };
